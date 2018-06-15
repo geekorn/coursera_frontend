@@ -1,3 +1,6 @@
+var HOURS_PER_DAY = 24;
+var MINUTES_PER_HOUR = 60;
+
 /**
  * @param {Number} hours
  * @param {Number} minutes
@@ -5,22 +8,14 @@
  * @returns {String}
  */
 module.exports = function (hours, minutes, interval) {
-  var newMinutes = minutes + interval;
-  var newHours = hours + Math.floor(newMinutes / 60);
+  minutes += interval;
+  hours += Math.floor(minutes / MINUTES_PER_HOUR);
  
-  if (newMinutes >= 60) {
-    newMinutes %= 60;  
-  }
-  if (newMinutes < 10) {
-    newMinutes = '0' + newMinutes;
-  }
+  minutes %= MINUTES_PER_HOUR;
+  hours %= HOURS_PER_DAY;
 
-  if (newHours >= 24) {
-    newHours %= 24;
-  }
-  if (newHours < 10) {
-    newHours = '0' + newHours;
-  }
+  minutes = (minutes < 10) ? '0' + minutes : minutes;
+  hours = (hours < 10) ? '0' + hours : hours;
 
-  return newHours + ':' + newMinutes;
+  return hours + ':' + minutes;
 };
