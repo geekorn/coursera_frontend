@@ -9,23 +9,24 @@
 - emit — оповещение всех подписчиков.
 
 ---
+``` js
+var emitter = require('./index.js');
 
-    var emitter = require('./index.js');
-
-    var notifications = {
-      counter: 0,
-      count: function() {
-        this.counter++;
-      }
+var notifications = {
+    counter: 0,
+    count: function() {
+    this.counter++;
     }
+}
 
-    emitter.on('new_notification', notifications, notifications.count);
+emitter.on('new_notification', notifications, notifications.count);
 
-    emitter.emit('new_notification');
+emitter.emit('new_notification');
 
-    console.log(notifications.counter);
+console.log(notifications.counter);
 
-    // 1
+// 1
+```
   
 ---
 
@@ -33,17 +34,19 @@
 - Все функции будут вызываться корректно, дополнительных проверок не требуется.
 - Все функции должны возвращать объект, от которого вызваны (emitter), чтобы их можно было вызывать в цепочке (chaining):
 
-        emitter
-          .on(...)
-          .off(...)
-          .emit(...)
-          .on(...);
+``` js
+emitter
+    .on(...)
+    .off(...)
+    .emit(...)
+    .on(...);
+```
 
 #### Метод 'on'
 Подписывает на событие. На любое событие подписчик может подписаться неограниченное количество раз.
-
-    emitter.on(eventName, subscriber, handler);
-
+``` js
+emitter.on(eventName, subscriber, handler);
+```
 - eventName — название события, на которое подписываемся.
 - subscriber — объект-подписчик.
 - handler — функция-обработчик.
@@ -68,5 +71,6 @@
 ## Подсказки
 
 Рекомендуется внимательно изучить файл с проверками.
+
 ---
 > **Важно**. В рамках курса мы следуем стандарту языка EcmaScript 5. Решения с использованием конструкций нового стандарта не пройдут проверку. Подробнее о EcmaScript вы можете узнать в [википедии](https://ru.wikipedia.org/wiki/ECMAScript).
