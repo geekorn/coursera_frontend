@@ -1,4 +1,23 @@
 /*Ссылка на шрифты кроме основного 'https://fonts.googleapis.com/css?family=Farsan|Hind+Siliguri|Racing+Sans+One|Six+Caps|Space+Mono:700'*/
+
+@font-face {
+    font-family: 'english_towne';
+    src: url('fonts/englishtowne-webfont.woff2') format('woff2'),
+         url('fonts/englishtowne-webfont.woff') format('woff'),
+         url('fonts/englishtowne-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ancient';
+    src: url('fonts/ancient_medium-webfont.woff2') format('woff2'),
+         url('fonts/ancient_medium-webfont.woff') format('woff'),
+         url('fonts/ancient_medium-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body
 {
     width: 1200px;
@@ -28,6 +47,9 @@ body
     padding: 25px 10px;
 
     border: 1px solid;
+
+    text-align: center;
+    
 }
 
 .header__weather
@@ -40,11 +62,19 @@ body
 .header__weather-title
 {
     margin: 0;
+    
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.17em;
 }
 
 .header__weather-text
 {
     margin: 0;
+    
+    text-align: justify;
+    font-size: 0.8em;
+    line-height: 1.1;
 }
 
 .header__title
@@ -52,6 +82,11 @@ body
     overflow: visible;
 
     margin: 0;
+    
+    text-align: center;
+    font-family: 'english_towne', ancient, fantasy;
+    font-size: 6em;
+    line-height: 1;
 }
 
 
@@ -69,6 +104,8 @@ body
     display: inline-block;
 
     margin: 0 30px;
+
+    font-size: 0.6em;
 }
 
 .sub-header__price
@@ -88,6 +125,10 @@ body
 {
     margin-top: 0;
     margin-bottom: 10px;
+
+    font-size: 3.2em;
+    font-family: 'Six Caps', sans-serif;
+    font-weight: bold;
 }
 
 .article__help
@@ -101,6 +142,11 @@ body
 {
     margin-top: 10px;
     margin-bottom: 4px;
+
+    text-align: justify;
+    text-indent: 1em;
+    font-size: 0.8em;
+    font-style: oblique;
 }
 
 .article__author
@@ -108,11 +154,19 @@ body
     display: block;
 
     margin-top: 10px;
+
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
 }
 
 .article__continue
 {
     display: block;
+
+    text-align: center;
+    font-size: 0.8em;
+    font-style: oblique;
 }
 
 .article__image
@@ -128,9 +182,28 @@ body
     margin: 10px 0 5px 10px;
 }
 
+.article__image-caption 
+{
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
 .article__subtitle
 {
     margin: 10px 0;
+
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+.article__content p {
+    margin: 0;
+
+    text-align: justify;
+    text-indent: 1em;
+    font-size: 0.8em;
 }
 
 /*––––––––––––––––––Блок главной фотографии–––––––––*/
@@ -144,14 +217,27 @@ body
     width: 100%;
 }
 
+.main-photo__caption
+{
+    text-align: right;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
 .main-photo__title
 {
     margin: 0;
+    
+    font-family: 'Times New Roman', serif;
+    font-size: 1.17em;
+    font-weight: bold;
 }
 
 .main-photo__desc
 {
     margin-bottom: 20px;
+
+    font-size: 0.8em;
 }
 
 /*––––––––––––––––––Линия разделения––––––––––––––––*/
@@ -213,6 +299,61 @@ body
 {
     margin: 10px 0 0 0;
 }
+
+.multicolumn .article__title_font_racing
+{
+    font-family: 'Racing Sans One', cursive;
+    font-size: 2em;
+    font-weight: bold;
+    /* font-style: italic; */
+}
+
+.multicolumn .article__title_font_farsan
+{
+    font-family: 'Farsan', cursive;
+    font-size: 2.3em;
+    font-weight: bold;
+    /* font-style: italic; */
+}
+
+.multicolumn .article__content
+{
+    position: relative;
+    /* -webkit-column-count: 2; */
+    columns: 2;
+    column-gap: 15px;
+    column-fill: balance;
+}
+
+.multicolumn .article__author,
+.multicolumn .article__continue
+{
+    -webkit-column-span: all;
+            column-span: all;
+}
+
+@supports not (column-span: all) {
+    .multicolumn .article__content 
+    {
+        padding: 1em 0;
+    }
+    .multicolumn .article__author,
+    .multicolumn .article__continue 
+    {
+      position: absolute;
+      left:0;
+      width: 100%;
+      margin: 0;
+    } 
+    .multicolumn .article__author
+    {
+        top: 0;
+    }
+    .multicolumn .article__continue 
+    {
+        bottom: 0;
+    }
+  }
 
 .center-column
 {
